@@ -1,0 +1,125 @@
+static void descadastrarUser(String user){
+	       		int counter = 1;
+	       		int getCounter= 0;
+	   			BufferedReader br = null;
+			    BufferedWriter bw = null;
+			    try {
+			         br = new BufferedReader(new FileReader("database/User.txt"));
+			         bw = new BufferedWriter(new FileWriter("database/UserTemp.txt"));
+			         String line;
+			         line = br.readLine();
+			         while ((line != null)) {;
+			        	 if (line.equals(user)) {
+				        	line = br.readLine();
+				        	getCounter = counter;
+				        	System.out.println("getcounter = " + getCounter);
+			         	} else {
+			        	bw.write(line);
+			        	bw.newLine();
+			        	line = br.readLine();
+			         	}
+			        	 counter++;
+				     }
+			    } catch (Exception e) {
+			         return;
+			      } finally {
+			         try {
+			            if(br != null)
+			               br.close();
+			         } catch (IOException e) {
+			            //
+			         }
+			         try {
+			            if(bw != null)
+			               bw.close();
+			         } catch (IOException e) {
+			            //		         		      
+			         }     
+			      	} 
+			      System.out.println("test1");
+			      File oldFile = new File("database/User.txt");
+			      oldFile.delete();
+			      File newFile = new File("database/UserTemp.txt");
+			      newFile.renameTo(oldFile);
+			      // Começando a apagar a linha no arquivo de passwords
+			      	counter = 1;
+			      	BufferedReader br1 = null;
+				    BufferedWriter bw1 = null;
+				    try {
+				         br1 = new BufferedReader(new FileReader("database/Pw.txt"));
+				         bw1 = new BufferedWriter(new FileWriter("database/PwTemp.txt"));
+				         String line;
+				         line = br1.readLine();
+				         while ((line != null)) {;
+				        	 if (counter == getCounter) {
+					        	line = br1.readLine();		        
+				         	} else {
+				        	bw1.write(line);
+				        	bw1.newLine();
+				        	line = br1.readLine();
+				         	}
+				        	 counter++;
+					     }
+				        	 
+				    } catch (Exception e) {
+				         return;
+				      } finally {
+				         try {
+				            if(br1 != null)
+				               br1.close();
+				         } catch (IOException e) {
+				            //
+				         }
+				         try {
+				            if(bw1 != null)
+				               bw1.close();
+				         } catch (IOException e) {
+				            //		         		      
+				         }     
+				      	}       
+				      File oldFile1 = new File("database/Pw.txt");
+				      oldFile1.delete();
+				      File newFile1 = new File("database/PwTemp.txt");
+				      newFile1.renameTo(oldFile1);	
+				   // Começando a apagar a linha no arquivo dos Funcionarios
+				      	counter = 1;
+				      	BufferedReader br2 = null;
+					    BufferedWriter bw2 = null;
+					    try {
+					         br2 = new BufferedReader(new FileReader("database/Funcionario.txt"));
+					         bw2 = new BufferedWriter(new FileWriter("database/FuncionarioTemp.txt"));
+					         String line;
+					         line = br2.readLine();
+					         while ((line != null)) {;
+					        	 if (counter == getCounter) {
+						        	line = br2.readLine();		        
+					         	} else {
+					        	bw2.write(line);
+					        	bw2.newLine();
+					        	line = br2.readLine();
+					         	}
+					        	 counter++;
+						     }
+					        	 
+					    } catch (Exception e) {
+					         return;
+					      } finally {
+					         try {
+					            if(br2 != null)
+					               br2.close();
+					         } catch (IOException e) {
+					            //
+					         }
+					         try {
+					            if(bw2 != null)
+					               bw2.close();
+					         } catch (IOException e) {
+					            //		         		      
+					         }     
+					      	}       
+					      File oldFile2 = new File("database/Funcionario.txt");
+					      oldFile2.delete();
+					      File newFile2 = new File("database/FuncionarioTemp.txt");
+					      newFile2.renameTo(oldFile2);
+	   
+	   } 
